@@ -1,25 +1,24 @@
+import java.util.Map;
+import java.util.HashMap;
+
 class Solution {
     public int solution(int[] A) {
-        int answer = 0;
-        boolean check = false;
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
-        for(int i=0; i<A.length-1; i++){
-            check = false;
-            if(A[i] == 0){
-                continue;
-            }
-            for(int j=i+1; j<A.length; j++){
-                if(A[i] == A[j]){
-                    check = true;
-                    A[i] = 0;
-                    A[j] = 0;
-                }
-            }
-            if(!check){
-                return A[i];
+        for(int i=0; i<A.length; i++){
+            if(map.get(A[i]) == null){
+                map.put(A[i], 1);
+            }else{
+                map.put(A[i], map.get(A[i])+1);
             }
         }
 
-        return answer;
+        for(Integer key : map.keySet()){
+            if(map.get(key) % 2 != 0){
+                return key;
+            }
+        }
+
+        return -1;
     }
 }
