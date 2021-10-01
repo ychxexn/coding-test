@@ -3,7 +3,7 @@ import java.util.Arrays;
 class Solution {
     public int[] solution(int N, int[] A) {
         int[] answer = new int[N];
-        int max = Integer.MIN_VALUE;
+        int max = 0;
 
         for(int i=0; i<A.length; i++){
             if(1 <= A[i] && A[i] <= N){
@@ -16,4 +16,3 @@ class Solution {
 
         return answer;
     }
-}
