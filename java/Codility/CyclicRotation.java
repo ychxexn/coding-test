@@ -1,19 +1,13 @@
 class Solution {
     public int[] solution(int[] A, int K) {
-        int[] result = new int[A.length];
-        int index = 0;
-        int cursor = A.length-(K%A.length);
+        int[] answer = new int[A.length];
 
-        while(true){
-            if(cursor == A.length){
-                cursor = 0;
-            }
-            result[index++] = A[cursor++];
-            if(cursor == A.length-(K%A.length)){
-                break;
-            }
+        for(int i=0; i<answer.length; i++){
+            int index = (i + K) % A.length;
+
+            answer[index] = A[i];
         }
 
-        return result;
+        return answer;
     }
 }
