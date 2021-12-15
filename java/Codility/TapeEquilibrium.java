@@ -1,21 +1,22 @@
 class Solution {
     public int solution(int[] A) {
+        int answer = Integer.MAX_VALUE;
         int sum = 0;
         int left = 0;
         int right = 0;
-        int min = Integer.MAX_VALUE;
 
-        for(int i=0; i<A.length; i++){
-            sum += A[i];
+        for(int num : A){
+            sum += num;
         }
 
-        for(int i=0; i<A.length; i++){
+        for(int i=0; i<A.length-1; i++){
             left += A[i];
             right = sum - left;
 
-            min =  (min < Math.abs(left-right)) ? min : Math.abs(left-right);
+            answer = (answer < Math.abs(left-right)) ? answer : Math.abs(left-right);
         }
 
-        return min;
+
+        return answer;
     }
 }
