@@ -1,2 +1,2 @@
 # [📒 JAVA](https://github.com/ychxexn/coding-test/tree/main/java)
-# [📒 MYSQL](https://github.com/ychxexn/coding-test/tree/main/mysql)
+# [📒 Oracle](https://github.com/ychxexn/coding-test/tree/main/oracle)
