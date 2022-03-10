@@ -1,0 +1,18 @@
+SELECT 
+    B.HOUR,
+    COUNT(A.HOUR)
+FROM
+    (SELECT 
+        TO_CHAR(DATETIME, 'HH24') AS HOUR
+    FROM
+        ANIMAL_OUTS) A,
+    (SELECT 
+        LEVEL-1 AS HOUR
+    FROM
+        DUAL
+    CONNECT BY LEVEL <= 24
+    ) B
+
+WHERE   A.HOUR(+) = B.HOUR
+GROUP BY B.HOUR
+ORDER BY B.HOUR
