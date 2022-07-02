@@ -1,30 +1,28 @@
+import java.util.stream.IntStream;
 class Solution {
     public int[] solution(int[] lottos, int[] win_nums) {
         int[] answer = new int[2];
+        int count = 0;
+        int zeroCount = 0;
         
-        int matchCnt = 0;
-        int zeroCnt = 0;
-        for(int i=0; i<lottos.length; i++){
-            if(lottos[i] == 0){
-                zeroCnt++;
+        for(int lotto : lottos){
+            if(lotto == 0){
+                zeroCount++;
                 continue;
             }
-            for(int j=0; j<win_nums.length; j++){
-                if(lottos[i] == win_nums[j]){
-                    matchCnt++;
-                    break;
-                }
+            if(IntStream.of(win_nums).anyMatch(x -> x == lotto)){
+                count++;
             }
         }
         
-        answer[0] = getRank(matchCnt+zeroCnt);
-        answer[1] = getRank(matchCnt);
+        answer[0] = getLottoRank(count + zeroCount);
+        answer[1] = getLottoRank(count);
         
         return answer;
     }
     
-    public int getRank(int num){
-        switch(num){
+    private int getLottoRank(int count){
+        switch(count){
             case 6:
                 return 1;
             case 5:
